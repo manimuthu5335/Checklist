@@ -67,50 +67,65 @@ button {
     cursor: pointer;
 }
 
-.topics{
-    width:400px;
-    margin:auto;
-    padding:25px;
-    background:#ffffff;
-    border-radius:12px;
-    border:2px solid #9caf88;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    font-family:Arial, sans-serif;
+.topics {
+    width: 400px;
+    margin: auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 2px solid #9caf88;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    font-family: Arial, sans-serif;
 }
 
-.topics h2{
-    text-align:center;
-    color:#5f7d5f;
-    margin-bottom:20px;
+.topics h2 {
+    text-align: center;
+    color: #5f7d5f;
+    margin-bottom: 20px;
 }
 
-.topic{
-    background:#e8f0e8;
-    padding:10px;
-    border-radius:6px;
-    margin-bottom:10px;
-    color:#2f3e2f;
+.topic {
+    background: #e8f0e8;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    color: #2f3e2f;
 }
 
-.status{
-    margin-top:15px;
-    font-weight:bold;
-    color:#5f7d5f;
+.status {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #5f7d5f;
 }
 
-button{
-    margin-top:15px;
-    width:100%;
-    padding:10px;
-    background:#9caf88;
-    color:white;
-    border:none;
-    border-radius:6px;
-    font-weight:bold;
-    cursor:pointer;
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: #9caf88;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-button:hover{
-    background:#7f9a73;
+button:hover {
+    background: #7f9a73;
 }
 
+table {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+th {
+    background-color: #9CAF88;
+    color: white;
+    text-align: left;
+    padding: 8px;
+}
+
+td {
+    padding: 8px;
+}
