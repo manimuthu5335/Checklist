@@ -588,9 +588,167 @@ const roadmap = {
     practice: "Final polishing - Documentation - Demo preparation",
   },
 };
+const devQuotes = [
+  "Code daily, improve constantly 💻",
+  "Bugs are proof you're trying 🐛",
+  "Think like a developer 🧠",
+  "Consistency beats talent in coding 💪",
+  "Write code, learn faster 🚀",
+  "Every bug you fix makes you stronger 🔧",
+  "Debugging is problem-solving 🔍",
+  "Small commits, big progress 📈",
+  "Code, break, fix, repeat 🔁",
+  "Practice makes you a better developer 💯",
+
+  "Read code more than you write 📘",
+  "Clean code matters 🧼",
+  "Understand before you implement 🧠",
+  "Google is your best friend 🌐",
+  "Stack Overflow saves lives 😄",
+  "Focus on logic, not syntax 🎯",
+  "Break problems into smaller parts 🧩",
+  "Learn by building projects 🏗️",
+  "Don't fear errors ❌",
+  "Errors teach you better than success 🔥",
+
+  "Push your code, not excuses 🚀",
+  "Think twice, code once 🧠",
+  "Refactor for clarity 🔧",
+  "Readable code > clever code 📖",
+  "Master the fundamentals 💯",
+  "Stay curious, keep coding 🌟",
+  "Your code reflects your thinking 🪞",
+  "Consistency builds skill 🔁",
+  "Version control is your safety net 🛡️",
+  "Commit often, commit smart 📌",
+  "Test your code, trust your logic ✔️",
+  "Fix one bug at a time 🐞",
+  "Stay patient while debugging ⏳",
+  "Good code is simple code ✨",
+  "Don’t copy, understand 📚",
+  "Write code for humans 👨‍💻",
+  "Code quality matters 🏆",
+  "Learn patterns, not just syntax 🔄",
+  "Keep your code DRY 💧",
+  "Practice problem-solving daily 🧠",
+  "Frontend or backend, logic is key 🔑",
+  "Understand the flow 📊",
+  "Optimize when necessary ⚡",
+  "First make it work, then improve 🔧",
+  "Code is like art 🎨",
+  "Think scalable 📈",
+  "Write less, achieve more 💡",
+  "Avoid overengineering 🚫",
+  "Build, break, learn 🔁",
+  "Stay consistent daily 📅",
+  "Errors are stepping stones 🪜",
+  "Master debugging skills 🔍",
+  "Code reviews improve quality 👀",
+  "Naming matters 🏷️",
+  "Structure your code well 🏗️",
+  "Understand APIs deeply 🌐",
+  "Keep learning frameworks 🔄",
+  "Stay updated with tech 📰",
+  "Solve real-world problems 🌍",
+  "Focus on performance ⚡",
+  "Angular today, fullstack tomorrow 🚀",
+  "Master TypeScript 🧠",
+  "Components are your building blocks 🧩",
+  "Services handle logic 🔧",
+  "Routing defines flow 🛣️",
+  "Reusable code saves time ⏳",
+  "State management is powerful ⚙️",
+  "Write scalable apps 📈",
+  "Keep UI clean and simple 🎨",
+  "User experience matters 💡",
+  "Backend is logic powerhouse ⚡",
+  "APIs connect everything 🌐",
+  "Database design is crucial 🗄️",
+  "Optimize queries 🔍",
+  "Handle errors gracefully ❌",
+  "Secure your APIs 🔐",
+  "Understand async programming ⏱️",
+  "Write efficient code 💻",
+  "Test your endpoints ✔️",
+  "Logging helps debugging 📜",
+  "Think fullstack 🔄",
+  "Integrate frontend & backend 🔗",
+  "Build end-to-end projects 🏗️",
+  "Deploy your apps 🚀",
+  "Learn from failures 💥",
+  "Stay consistent 💯",
+  "Practice daily 📅",
+  "Focus on growth 📈",
+  "Keep improving 🔧",
+  "Be a problem solver 🧠",
+  "Write code with purpose 🎯",
+  "Stay disciplined 💪",
+  "Avoid distractions 🚫",
+  "Time management matters ⏳",
+  "Code every single day 📆",
+  "Review your own code 👀",
+  "Simplify complexity ✨",
+  "Think before coding 🧠",
+  "Stay humble, keep learning 📘",
+  "Share knowledge 🤝",
+  "Learn new tools 🛠️",
+  "Explore frameworks 🔍",
+  "Master debugging 🔧",
+  "Keep experimenting ⚗️",
+  "Stay motivated 🔥",
+  "Take breaks wisely ☕",
+  "Don’t burn out ⚠️",
+  "Stay consistent 💯",
+  "Push your limits 🚀",
+  "Believe in your journey ✨",
+  "Code is your superpower 🦸‍♂️",
+  "Build your portfolio 📁",
+  "Solve challenges daily 🧩",
+  "Think like an engineer ⚙️",
+  "Stay focused 🎯",
+  "Keep growing 🌱",
+  "Be better than yesterday 📈",
+  "Stay strong 💪",
+  "Never quit coding ❗",
+  "Win with consistency 🏆",
+];
+let quoteQueue = JSON.parse(localStorage.getItem("quoteQueue")) || [];
+function getNextQuote() {
+  if (quoteQueue.length === 0) {
+    quoteQueue = [...devQuotes];
+    for (let i = quoteQueue.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [quoteQueue[i], quoteQueue[j]] = [quoteQueue[j], quoteQueue[i]];
+    }
+  }
+  const nextQuote = quoteQueue.shift();
+  localStorage.setItem("quoteQueue", JSON.stringify(quoteQueue));
+  return nextQuote;
+}
+
+function showRandomQuote() {
+  const quote = getNextQuote();
+  const quoteElement = document.getElementById("quoteText");
+  if (quoteElement) {
+    quoteElement.innerText = quote;
+  }
+}
 let completedDays = JSON.parse(localStorage.getItem("completedDays")) || [];
 let selectedDay = null;
 const daysContainer = document.getElementById("days");
+const circle = document.getElementById("circleProgress");
+const radius = 32;
+const circumference = 2 * Math.PI * radius;
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = circumference;
+function showWelcome() {
+  document.getElementById("welcome").style.display = "block";
+  document.getElementById("topics").style.display = "none";
+}
+function showTopics() {
+  document.getElementById("welcome").style.display = "none";
+  document.getElementById("topics").style.display = "block";
+}
 function renderDays() {
   daysContainer.innerHTML = "";
   for (let i = 1; i <= 140; i++) {
@@ -606,6 +764,7 @@ function renderDays() {
 }
 function showDay(day) {
   selectedDay = day;
+  showTopics();
   let data = roadmap[day];
   document.getElementById("title").innerText = "Day " + day + " Topics";
   if (data) {
@@ -620,8 +779,9 @@ function showDay(day) {
     document.getElementById("practice").innerText = "Planned later";
   }
   document.getElementById("status").innerText = completedDays.includes(day)
-    ? "Completed ✅"
-    : "Not Completed ❌";
+    ? "Completed"
+    : "Not Completed";
+  showRandomQuote();
 }
 
 function markComplete() {
@@ -631,6 +791,27 @@ function markComplete() {
     localStorage.setItem("completedDays", JSON.stringify(completedDays));
   }
   renderDays();
-  showDay(selectedDay);
+  updateProgress();
+  // showDay(selectedDay);
 }
-renderDays();
+
+function updateProgress() {
+  const totalDays = 140;
+  const completed = completedDays.length;
+  const percent = Math.round((completed / totalDays) * 100);
+  const circle = document.getElementById("circleProgress");
+  const text = document.getElementById("circleText");
+  if (!circle || !text) return;
+  const radius = 32;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDasharray = circumference;
+  circle.style.strokeDashoffset = offset;
+  text.innerText = percent + "%";
+}
+document.addEventListener("DOMContentLoaded", () => {
+  renderDays();
+  updateProgress();
+  showWelcome();
+  showRandomQuote();
+});

@@ -5,14 +5,28 @@
     <meta charset="UTF-8">
     <title>140 Day Learning Tracker</title>
     <link rel="stylesheet" href="./Checklist.css">
-    <link rel="scri" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
+        <div class="progress-circle" id="progressCircle">
+            <svg width="80" height="80">
+                <circle cx="40" cy="40" r="32" class="bg"></circle>
+                <circle cx="40" cy="40" r="32" class="progress" id="circleProgress"></circle>
+            </svg>
+            <div class="progress-text" id="circleText">0%</div>
+        </div>
         <div class="days" id="days"></div>
-        <div class="topics">
+        <div class="welcome" id="welcome">
+            <h2>Welcome to 140 Days .NET & Angular Full Stack Journey 🚀</h2>
+            <p>Select a day from the left to start learning.</p>
+        </div>
+        <div class="topics" id="topics" style="display: none;">
             <h2 id="title">Select a Day</h2>
+            <div class="quote-box">
+                <p id="quoteText">✨Quotes</p>
+            </div>
             <table class="table table-bordered text-center">
                 <tbody>
                     <tr>
